@@ -11,3 +11,101 @@ header {
 section {
     padding-bottom: 5rem;
 }
+
+
+/* Modern layout for text and image side by side with responsive design */
+/* Usage:
+   - Wrap text and image inside a container with class 'text-image-container'
+   - Inside container, place an 'img' element and a div with class 'text-content'
+   - Adjust image alt text accordingly
+*/
+
+:root {
+  --primary-color-start: #10b981; /* emerald */
+  --primary-color-end: #059669; /* darker emerald */
+  --background-blur: rgba(255 255 255 / 0.15);
+  --text-color: #e0e7ff;
+  --font-family: 'Inter', sans-serif;
+  --radius: 12px;
+  --gap: 24px;
+}
+
+.text-image-container {
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+  background: linear-gradient(135deg, var(--primary-color-start), var(--primary-color-end));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: var(--radius);
+  padding: 24px;
+  max-width: 900px;
+  margin: 24px auto;
+  box-shadow: 0 8px 16px rgba(16 185 129 / 0.3);
+  color: var(--text-color);
+  font-family: var(--font-family);
+  transition: box-shadow 0.3s ease;
+}
+
+.text-image-container:hover {
+  box-shadow: 0 12px 24px rgba(16 185 129 / 0.5);
+}
+
+.text-image-container img {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+  box-shadow: 0 6px 12px rgba(0 0 0 / 0.2);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.text-image-container img:hover {
+  transform: scale(1.05);
+}
+
+.text-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.text-content h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  margin: 0;
+  color: #d1fae5; /* lighter emerald */
+}
+
+.text-content p {
+  margin: 0;
+  color: #cffafe; /* pale cyan */
+}
+
+@media (max-width: 768px) {
+  .text-image-container {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px;
+    max-width: 100%;
+  }
+
+  .text-image-container img {
+    width: 100%;
+    border-radius: var(--radius);
+  }
+
+  .text-content {
+    font-size: 1rem;
+  }
+
+  .text-content h2 {
+    font-size: 1.5rem;
+  }
+}
+
